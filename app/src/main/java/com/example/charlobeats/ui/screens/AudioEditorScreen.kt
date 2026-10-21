@@ -188,7 +188,7 @@ fun AudioEditorScreen(
             .fillMaxSize()
             .background(DarkCanvas)
     ) {
-        // Top Navbar matching Base44
+        // Top Navbar
         BoomBoomTopBar(
             currentRoute = Screen.AudioEditor.route,
             navController = navController
@@ -418,7 +418,7 @@ fun AudioEditorScreen(
                 }
             }
 
-            // Expandable ✦ AI ENHANCE Accordion Card matching Base44
+            // Expandable ✦ AI ENHANCE Accordion Card
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -568,7 +568,7 @@ fun AudioEditorScreen(
                                 modifier = Modifier.fillMaxWidth().height(44.dp)
                             )
 
-                            // 6 AI Smart Buttons matching Base44 `vv`
+                            // 6 AI Smart Buttons
                             Row(
                                 modifier = Modifier.fillMaxWidth(),
                                 horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -712,7 +712,7 @@ fun AudioEditorScreen(
                 )
             }
 
-            // 10 Effect Sliders matching Base44 `rj`
+            // 10 Effect Sliders
             // 1. Bass Boost (-30 to 100)
             EffectSliderCard(
                 title = "Bass Boost",
@@ -820,7 +820,7 @@ fun AudioEditorScreen(
                 icon = Icons.Default.SpeakerGroup
             )
 
-            // Bottom Action Buttons matching Base44
+            // Bottom Action Buttons
             Column(
                 modifier = Modifier
                     .fillMaxWidth()

@@ -13,7 +13,7 @@ class BoomAudioEngineTest {
     @Test
     fun testAllPresetModesExist() {
         val presets = AudioPresetRepository.presets
-        assertEquals("There should be 7 preset modes matching Base44", 7, presets.size)
+        assertEquals("There should be 7 preset modes", 7, presets.size)
 
         val presetTitles = presets.map { it.title }
         assertTrue(presetTitles.contains("Night Bass Mode"))

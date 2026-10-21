@@ -13,6 +13,6 @@ local.properties
 *.apk
 *.aab
 
-# Analysis artifacts
-base44_*
+# Temporary files
+temp_*
 extracted_*

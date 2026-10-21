@@ -7,7 +7,7 @@ import kotlin.math.*
 /**
  * Offline AI Audio Intelligence Analyzer.
  * Extracts acoustic features, performs spectral analysis, detects music genres,
- * and generates tailored DSP enhancements matching https://boom-sonic-flow.base44.app
+ * and generates tailored DSP enhancements in real-time.
  */
 object AiAudioAnalyzer {
 

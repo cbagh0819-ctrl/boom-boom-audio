@@ -8,8 +8,6 @@
 
 **Boom-Boom Audio** is a modern, high-performance Android music enhancer app built with Kotlin, Jetpack Compose, and custom digital signal processing (DSP). Designed with a dark cyberpunk neon aesthetic, it delivers studio-grade real-time audio effects, 8D binaural rotation, offline AI acoustic intelligence, and multi-format audio export.
 
-Inspired by and built to match 1:1 functionality with [boom-sonic-flow.base44.app](https://boom-sonic-flow.base44.app).
-
 ---
 
 ## ✨ Features
