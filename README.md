@@ -1,12 +1,17 @@
 # 🎧 Boom-Boom Audio Enhancer
 
+[![Live Web App](https://img.shields.io/badge/Live%20Web%20App-Try%20Boom--Boom%20Audio-00F0FF?style=for-the-badge&logo=googlechrome&logoColor=black)](https://cbagh0819-ctrl.github.io/boom-boom-audio/)
+
 [![Android](https://img.shields.io/badge/Platform-Android-green.svg)](https://developer.android.com)
 [![Kotlin](https://img.shields.io/badge/Language-Kotlin-purple.svg)](https://kotlinlang.org)
 [![Compose](https://img.shields.io/badge/UI-Jetpack%20Compose%20%2F%20Material%203-blue.svg)](https://developer.android.com/jetpack/compose)
 [![Audio](https://img.shields.io/badge/Audio-Media3%20ExoPlayer%20%2B%20DSP-cyan.svg)](https://developer.android.com/media/media3)
 [![License](https://img.shields.io/badge/License-MIT-pink.svg)](LICENSE)
 
-**Boom-Boom Audio** is a modern, high-performance Android music enhancer app built with Kotlin, Jetpack Compose, and custom digital signal processing (DSP). Designed with a dark cyberpunk neon aesthetic, it delivers studio-grade real-time audio effects, 8D binaural rotation, offline AI acoustic intelligence, and multi-format audio export.
+> 🌐 **Experience Boom-Boom Audio Live in Your Browser:**  
+> **[https://cbagh0819-ctrl.github.io/boom-boom-audio/](https://cbagh0819-ctrl.github.io/boom-boom-audio/)**
+
+**Boom-Boom Audio** is a modern, high-performance music enhancer available as both a native Android app and a Web Audio edition. Powered by Kotlin, Jetpack Compose, and custom digital signal processing (DSP), it delivers studio-grade real-time audio effects, 8D binaural rotation, offline AI acoustic intelligence, and multi-format audio export.
 
 ---
 

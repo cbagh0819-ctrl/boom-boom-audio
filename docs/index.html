@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boom-Boom Audio - Cyberpunk Music Enhancer & 8D Simulator</title>
+  <meta name="description" content="Next-generation cyberpunk audio processing. Real-time effects, 8D audio simulation, offline AI intelligence, and multi-format audio export.">
+  <meta name="theme-color" content="#090710">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20%22100%22%20%22100%22><text y=%22.9em%22 font-size=%2290%22>🎧</text></svg>">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Navbar -->
+    <header class="navbar">
+      <div class="logo-brand" data-nav="home">
+        <div class="logo-icon">🎵</div>
+        <div class="logo-title">BOOM</div>
+      </div>
+      <nav class="nav-links">
+        <button class="nav-btn active" data-page="home">🏠 Home</button>
+        <button class="nav-btn" data-page="editor">🎛️ Editor</button>
+        <button class="nav-btn" data-page="presets">🎵 Presets</button>
+        <button class="nav-btn" data-page="saved">📁 Saved</button>
+        <a class="nav-apk-btn" href="https://github.com/cbagh0819-ctrl/boom-boom-audio/releases" target="_blank" rel="noopener">📱 APK</a>
+      </nav>
+    </header>
+
+    <!-- Hidden File Input -->
+    <input type="file" id="file-upload-input" accept="audio/*" style="display: none;">
+
+    <!-- ================= HOME PAGE ================= -->
+    <main id="page-home" class="page-view active">
+      <div class="hero-box">
+        <div class="hero-pill">AUDIO ENHANCER</div>
+        <h1 class="hero-title">BOOM-BOOM</h1>
+        <p class="hero-desc">
+          Next-generation cyberpunk audio processing. Real-time effects, 8D audio simulation, and AI-powered enhancement right in your browser.
+        </p>
+
+        <!-- Upload Drop Zone -->
+        <div id="home-dropzone" class="upload-dropzone">
+          <div class="upload-icon-circle">☁️</div>
+          <div class="upload-prompt">Drop your audio file here</div>
+          <div class="upload-sub">Supports MP3, WAV, OGG, FLAC</div>
+        </div>
+
+        <div class="quick-action-row">
+          <button id="btn-start-demo" class="glow-btn">⚡ Try Demo Track →</button>
+          <button class="glow-btn-secondary" data-nav="editor">🎛️ Open Editor</button>
+        </div>
+      </div>
+
+      <!-- Feature Highlights Grid -->
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon-badge" style="background: rgba(0, 240, 255, 0.15); color: var(--cyan-neon);">⚡</div>
+          <div class="feature-title">Real-Time Effects</div>
+          <div class="feature-desc">10 DSP effects with zero latency preview and dynamic headroom limiting.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon-badge" style="background: rgba(139, 92, 246, 0.15); color: var(--purple-neon);">🎛️</div>
+          <div class="feature-title">DJ Presets</div>
+          <div class="feature-desc">7 handcrafted audio presets for car speakers, club sound, and vocal clarity.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon-badge" style="background: rgba(16, 185, 129, 0.15); color: var(--green-neon);">🎧</div>
+          <div class="feature-title">Offline Processing</div>
+          <div class="feature-desc">All audio is processed locally on your device with complete privacy.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon-badge" style="background: rgba(236, 72, 153, 0.15); color: var(--pink-neon);">💾</div>
+          <div class="feature-title">Export & Save</div>
+          <div class="feature-desc">Export studio-grade audio in MP3, WAV, or 24-bit high-resolution FLAC.</div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ================= AUDIO EDITOR PAGE ================= -->
+    <main id="page-editor" class="page-view">
+      <!-- Notification Banner -->
+      <div id="notif-banner" class="notification-banner hidden">
+        <span id="notif-text" class="notif-text">✦ AI Enhancement Applied</span>
+        <button id="notif-close" class="notif-close">✕</button>
+      </div>
+
+      <!-- Track Header Card -->
+      <div class="track-header-card">
+        <div>
+          <div id="track-title-display" class="track-meta-title">Cyberpunk Bass 808 (Demo)</div>
+          <div class="track-meta-sub">Editing • Studio Quality</div>
+        </div>
+        <button id="btn-change-track" class="change-track-btn">☁️ Change</button>
+      </div>
+
+      <!-- Live Waveform Visualizer -->
+      <div class="visualizer-card">
+        <canvas id="visualizer-canvas" class="visualizer-canvas"></canvas>
+      </div>
+
+      <!-- Player Controls Card -->
+      <div class="player-card">
+        <div class="timeline-row">
+          <span id="time-current" class="time-label">00:00</span>
+          <input type="range" id="seek-slider" class="seek-slider" min="0" max="100" value="0">
+          <span id="time-total" class="time-label">00:12</span>
+        </div>
+        <div class="player-controls-row">
+          <button id="btn-rewind" class="ctrl-btn" title="Rewind 10s">↺10</button>
+          <button id="btn-restart" class="ctrl-btn" title="Restart">⏮</button>
+          <button id="play-pause-btn" class="play-pause-btn" title="Play/Pause">
+            <span id="play-pause-icon">▶</span>
+          </button>
+          <button id="btn-forward" class="ctrl-btn" title="Forward 10s">⏭</button>
+        </div>
+      </div>
+
+      <!-- Expandable AI ENHANCE Accordion Card -->
+      <div id="ai-card" class="ai-card">
+        <div id="ai-card-header" class="ai-card-header">
+          <div class="ai-header-left">
+            <div class="ai-sparkle-icon">✨</div>
+            <div>
+              <div class="ai-header-title">AI ENHANCE</div>
+              <div class="ai-header-sub">AI-powered audio intelligence</div>
+            </div>
+          </div>
+          <div class="ai-chevron">▼</div>
+        </div>
+        <div class="ai-card-body">
+          <!-- Real-Time Diagnostic Box -->
+          <div id="ai-diagnosis-box" class="ai-diagnosis-box" style="display: none;">
+            <div class="diagnosis-top-row">
+              <div id="diag-genre" class="diagnosis-genre">🎵 DJ / Club Track</div>
+              <div id="diag-confidence" class="diagnosis-confidence">91% confidence</div>
+            </div>
+            <div id="diag-preset" class="diagnosis-preset-name">✦ DJ Punch Mode</div>
+            <div id="diag-summary" class="diagnosis-summary">High loudness and steady 4-on-the-floor energy. Enhanced kick harmonics and subwoofer boost dialed in.</div>
+            <div id="diag-tags" class="diagnosis-tags">
+              <span class="diagnosis-tag">⚠ Muddy Bass</span>
+              <span class="diagnosis-tag">⚠ Weak Vocals</span>
+            </div>
+          </div>
+
+          <button id="ai-auto-btn" class="ai-auto-btn">✨ AI Auto Enhance</button>
+
+          <!-- 6 AI Smart Action Buttons -->
+          <div class="ai-features-grid">
+            <button id="btn-ai-smart-bass" class="ai-action-btn">
+              <div class="ai-action-icon" style="color: var(--yellow-neon);">⚡</div>
+              <div>
+                <div class="ai-action-title">AI Smart Bass</div>
+                <div class="ai-action-sub">Intelligent bass boost</div>
+              </div>
+            </button>
+            <button id="btn-ai-vocal-cleaner" class="ai-action-btn">
+              <div class="ai-action-icon" style="color: var(--cyan-neon);">🎤</div>
+              <div>
+                <div class="ai-action-title">AI Vocal Cleaner</div>
+                <div class="ai-action-sub">Clarity boost & de-mud</div>
+              </div>
+            </button>
+            <button id="btn-ai-distortion" class="ai-action-btn">
+              <div class="ai-action-icon" style="color: var(--pink-neon);">🛡️</div>
+              <div>
+                <div class="ai-action-title">AI Distortion</div>
+                <div class="ai-action-sub">Clipping & harsh filter</div>
+              </div>
+            </button>
+            <button id="btn-ai-loudness" class="ai-action-btn">
+              <div class="ai-action-icon" style="color: var(--green-neon);">📊</div>
+              <div>
+                <div class="ai-action-title">AI Loudness</div>
+                <div class="ai-action-sub">Dynamic range balance</div>
+              </div>
+            </button>
+            <button id="btn-ai-earphone" class="ai-action-btn">
+              <div class="ai-action-icon" style="color: var(--purple-neon);">🎧</div>
+              <div>
+                <div class="ai-action-title">AI Earphone</div>
+                <div class="ai-action-sub">Tuned for small drivers</div>
+              </div>
+            </button>
+            <button id="btn-ai-genre" class="ai-action-btn">
+              <div class="ai-action-icon" style="color: var(--pink-neon);">🎵</div>
+              <div>
+                <div class="ai-action-title">AI Genre Detection</div>
+                <div class="ai-action-sub">Identify music type & EQ</div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Effects Sliders Section -->
+      <div class="effects-header-row">
+        <div class="effects-title">EFFECTS</div>
+        <button id="btn-reset-all" class="reset-all-btn">↺ Reset All</button>
+      </div>
+
+      <div class="sliders-stack">
+        <!-- 1. Bass Boost -->
+        <div class="slider-card">
+          <div class="slider-top-row">
+            <span class="slider-label">🔊 Bass Boost</span>
+            <span id="slider-bass-val" class="slider-value">50%</span>
+          </div>
+          <input type="range" id="slider-bass" class="effect-slider" min="-30" max="100" value="50">
+        </div>
+
+        <!-- 2. Vocal Boost -->
+        <div class="slider-card">
+          <div class="slider-top-row">
+            <span class="slider-label">🎤 Vocal Boost</span>
+            <span id="slider-vocal-val" class="slider-value">0%</span>
+          </div>
+          <input type="range" id="slider-vocal" class="effect-slider" min="-30" max="100" value="0">
+        </div>
+
+        <!-- 3. Pitch Shift -->
+        <div class="slider-card">
+          <div class="slider-top-row">
+            <span class="slider-label">🎚️ Pitch Shift</span>
+            <span id="slider-pitch-val" class="slider-value">0 st</span>
+          </div>
+          <input type="range" id="slider-pitch" class="effect-slider" min="-12" max="12" value="0">
+        </div>
+
+        <!-- 4. Speed Control -->
+        <div class="slider-card">
+          <div class="slider-top-row">
+            <span class="slider-label">⏩ Speed Control</span>
+            <span id="slider-speed-val" class="slider-value">1.0x</span>
+          </div>
+          <input type="range" id="slider-speed" class="effect-slider" min="0.5" max="2.0" step="0.05" value="1.0">
+        </div>
+
+        <!-- 5. Loudness -->
+        <div class="slider-card">
+          <div class="slider-top-row">
+            <span class="slider-label">📢 Loudness</span>
+            <span id="slider-loudness-val" class="slider-value">35%</span>
+          </div>
+          <input type="range" id="slider-loudness" class="effect-slider" min="0" max="100" value="35">
+        </div>
+
+        <!-- 6. Stereo Width -->
+        <div class="slider-card">
+          <div class="slider-top-row">
+            <span class="slider-label">↔️ Stereo Width</span>
+            <span id="slider-stereo-val" class="slider-value">30%</span>
+          </div>
+          <input type="range" id="slider-stereo" class="effect-slider" min="0" max="100" value="30">
+        </div>
+
+        <!-- 7. Studio Reverb -->
+        <div class="slider-card">
+          <div class="slider-top-row">
+            <span class="slider-label">🌊 Reverb</span>
+            <span id="slider-reverb-val" class="slider-value">0%</span>
+          </div>
+          <input type="range" id="slider-reverb" class="effect-slider" min="0" max="100" value="0">
+        </div>
+
+        <!-- 8. 3D Audio -->
+        <div class="slider-card">
+          <div class="slider-top-row">
+            <span class="slider-label">👤 3D Audio</span>
+            <span id="slider-3d-val" class="slider-value">0%</span>
+          </div>
+          <input type="range" id="slider-3d" class="effect-slider" min="0" max="100" value="0">
+        </div>
+
+        <!-- 9. 8D Audio Speed -->
+        <div class="slider-card">
+          <div class="slider-top-row">
+            <span class="slider-label">🔄 8D Audio Speed</span>
+            <span id="slider-8d-val" class="slider-value">0%</span>
+          </div>
+          <input type="range" id="slider-8d" class="effect-slider" min="0" max="100" value="0">
+        </div>
+
+        <!-- 10. Subwoofer Surround -->
+        <div class="slider-card">
+          <div class="slider-top-row">
+            <span class="slider-label">📻 Subwoofer Surround</span>
+            <span id="slider-subwoofer-val" class="slider-value">50%</span>
+          </div>
+          <input type="range" id="slider-subwoofer" class="effect-slider" min="0" max="100" value="50">
+        </div>
+      </div>
+
+      <!-- Action Row -->
+      <div class="actions-card">
+        <div class="actions-export-row">
+          <button id="btn-export-wav" class="action-btn">
+            <span>⬆</span>
+            <span>Export WAV</span>
+          </button>
+          <button id="btn-export-flac" class="action-btn">
+            <span>⬆</span>
+            <span>Export FLAC (24-bit)</span>
+          </button>
+          <button id="btn-export-mp3" class="action-btn">
+            <span>⬆</span>
+            <span>Export MP3</span>
+          </button>
+        </div>
+        <div class="actions-bottom-row">
+          <button id="btn-save-library" class="action-btn" style="border-color: rgba(139, 92, 246, 0.4);">
+            <span>💾 Save to Library</span>
+          </button>
+          <button class="action-btn" data-nav="presets" style="border-color: rgba(0, 240, 255, 0.4);">
+            <span>📊 Presets</span>
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- ================= PRESETS PAGE ================= -->
+    <main id="page-presets" class="page-view">
+      <div class="screen-header">
+        <div>
+          <div class="screen-title">PRESETS</div>
+          <div class="screen-subtitle">Professional audio presets for every scenario</div>
+        </div>
+        <button class="change-track-btn" data-nav="editor">← Back to Editor</button>
+      </div>
+
+      <div id="presets-list" class="presets-list">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </main>
+
+    <!-- ================= SAVED SONGS PAGE ================= -->
+    <main id="page-saved" class="page-view">
+      <div class="screen-header">
+        <div>
+          <div class="screen-title">SAVED SONGS</div>
+          <div id="saved-count" class="screen-subtitle">Your enhanced audio library</div>
+        </div>
+        <button class="change-track-btn" data-nav="editor">🎛️ Open Editor</button>
+      </div>
+
+      <div id="saved-list" class="saved-list">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </main>
+
+    <!-- Export Success Modal -->
+    <div id="export-modal" class="modal-overlay">
+      <div class="modal-card">
+        <div class="modal-icon">✓</div>
+        <div class="modal-title">Export Complete!</div>
+        <div class="modal-details">
+          <div><strong>Track:</strong> <span id="modal-track">Cyberpunk Bass 808 (Demo)</span></div>
+          <div><strong>Format:</strong> <span id="modal-format">MP3</span> • <strong>Size:</strong> <span id="modal-size">2067 KB</span></div>
+          <div><strong>Preset:</strong> <span id="modal-preset" style="color: var(--cyan-neon);">Custom Enhanced</span></div>
+          <div style="font-size: 11px; color: var(--text-dim); margin-top: 6px;">Audio processed offline via Web Audio DSP pipeline.</div>
+        </div>
+        <div class="modal-btn-row">
+          <button id="modal-open-saved" class="modal-btn modal-btn-secondary">Open Library</button>
+          <button id="modal-download" class="modal-btn modal-btn-primary">Download File</button>
+        </div>
+        <button id="modal-close" style="background: none; border: none; color: var(--text-muted); font-size: 12px; margin-top: 14px; cursor: pointer;">Close</button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div>Boom-Boom Audio &copy; 2026 • Studio-Grade Audio Enhancer</div>
+      <div style="margin-top: 4px;">Native Android App & Web Audio Edition • Open Source on <a href="https://github.com/cbagh0819-ctrl/boom-boom-audio" target="_blank" rel="noopener">GitHub</a></div>
+    </footer>
+  </div>
+
+  <script src="audio-engine.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
