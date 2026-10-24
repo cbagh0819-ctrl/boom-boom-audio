@@ -1,3 +1,18 @@
+# WORKING PICS
+
+<img width="947" height="410" alt="image" src="https://github.com/user-attachments/assets/b7bb2e26-cdf2-4b07-89c6-7ab9103ba6e4" />
+
+<img width="945" height="411" alt="image" src="https://github.com/user-attachments/assets/7f64cfa2-0db9-4c0f-bc99-705792aa1c4e" />
+
+<img width="947" height="410" alt="image" src="https://github.com/user-attachments/assets/dcb06ddc-bedd-4b65-bb1c-1577adf76560" />
+
+<img width="949" height="421" alt="image" src="https://github.com/user-attachments/assets/c00537fa-f6e0-4064-a848-032184dfd4d9" />
+
+<img width="947" height="412" alt="image" src="https://github.com/user-attachments/assets/1741bdf8-c03b-4018-8c11-54f2b4e2ae24" />
+
+<img width="959" height="414" alt="image" src="https://github.com/user-attachments/assets/79fa5a95-4969-4302-b8e2-53cd4a0c35ea" />
+
+
 # 🎧 Boom-Boom Audio Enhancer
 
 [![Live Web App](https://img.shields.io/badge/Live%20Web%20App-Try%20Boom--Boom%20Audio-00F0FF?style=for-the-badge&logo=googlechrome&logoColor=black)](https://cbagh0819-ctrl.github.io/boom-boom-audio/)
